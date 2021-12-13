@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sample-django
+  name: sample-django
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-django
+  template
+    metadata:
+      labels:
+        app: sample-django
+    spec:
+      containers:
+        - image: sample-django:0.1
+          name: sample-django
+          ports:
+            - containerPort: 8000
+      restartPolicy: Always
